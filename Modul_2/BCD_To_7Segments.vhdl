@@ -1,0 +1,31 @@
+-- Muhammad Ammar Hanif
+-- 13224087
+-- EL2102 Praktikum Sistem Digital
+-- Tugas Pendahuluan Nomor 1
+
+-- Import and use the ieee library
+library ieee;
+use ieee.std_logic_1164.all;
+
+-- create an entity called "BDC_to_7Segment", with 4 bit X as an input and 7 function output
+entity BCD_to_7segment is
+    port (
+        X : in std_logic_vector(3 downto 0);
+        a, b, c, d, e, f, g : out std_logic;
+    );
+end entity BCD_to_7segment;
+
+-- creating a behavioral architecture
+architecture behavioral of BCD_to_7segment is 
+begin
+    
+    -- creating the SOP function based on the Karnaugh Map minimization
+    a <= ((not X(3)) and X(1)) or (X(2) and X(0)) or ((not X(2)) and (not X(1)) and (not X(0))) or X(3);
+    b <= (not X(2)) or ((not X(1)) and (not X(0))) or (X(1) and X(0));
+    c <= X(3) or X(2) or ((not X(3)) and (not X(1))) or ((not X(3)) and X(0));
+    d <= X(3) or (X(1) and (not X(0))) or ((not X(2)) and (not X(1)) and (not X(0))) or (X(2) and (not X(1)) and X(0)) or ((not X(2)) and X(1) and X(0));
+    e <= ((not X(2)) and (not X(1)) and (not X(0))) or (X(1) and (not X(0)));
+    f <= X(3) or (X(2) and (not X(1))) or ((not X(2)) and (not X(1)) and (not X(0))) or (X(2) and X(1) and (not X(0)));
+    g <= X(3) or (X(2) and (not X(1))) or ((not X(2)) and X(1) and X(0)) or (X(1) and (not X(0)));
+
+end architecture behavioral;
