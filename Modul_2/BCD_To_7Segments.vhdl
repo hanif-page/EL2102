@@ -1,14 +1,22 @@
--- Muhammad Ammar Hanif
--- 13224087
--- EL2102 Praktikum Sistem Digital
--- Tugas Pendahuluan Nomor 1
--- Kelompok 5
+-- Nama          : Muhammad Ammar Hanif
+-- NIM           : 13224087
+-- Rombongan     : -
+-- Kelompok      : 5 
+-- Percobaan     : 2
+-- Tanggal       : 8 Oktober 2024
+------------------------------------------------------------------------------
+-- Deskripsi
+-- Fungsi   : Menentukan fungsi keluaran 1 bit 7 Segment (a-g) berdasarkan 
+--            masukan 4 bit X.   
+-- Input    : X (4 bit) 
+-- Output   : a, b, c, d, e, f, g (masing-masing 1 bit) untuk kondisi apakah
+--            bagian pada display menyala atau tidak.
 
 -- Import and use the ieee library
 library ieee;
 use ieee.std_logic_1164.all;
 
--- create an entity called "BDC_to_7Segment", with 4 bit X as an input and 7 function output
+-- create an entity called "BCD_to_7Segment", with 4 bit X as an input and 7 function output
 entity BCD_to_7segment is
     port (
         X : in std_logic_vector(3 downto 0);

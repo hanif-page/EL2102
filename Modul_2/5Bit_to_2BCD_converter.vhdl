@@ -1,9 +1,16 @@
--- Muhammad Ammar Hanif
--- 13224087
--- EL2102 Praktikum Sistem Digital
--- Tugas Pendahuluan Nomor 2
--- Kelompok 5
-
+-- Nama          : Muhammad Ammar Hanif
+-- NIM           : 13224087
+-- Rombongan     : -
+-- Kelompok      : 5 
+-- Percobaan     : 2
+-- Tanggal       : 8 Oktober 2024
+------------------------------------------------------------------------------
+-- Deskripsi
+-- Fungsi   : Melakukan konversi 5 bit B menjadi sebuah dua digit BCD   
+-- Input    : B (5 bit) 
+-- Output   : tens (4 bit) untuk nilai puluhan dari BCD
+--          : ones (4 bit) untuk nilai satuan dari BCD
+  
 -- Import and use the ieee library
 library ieee;
 use ieee.std_logic_1164.all;
@@ -25,7 +32,7 @@ end entity fivebit_to_2bcd;
 -- creating a behavioral architecture
 architecture behavioral of fivebit_to_2bcd is
 begin
-    -- This logic functions comes from the truth table of five bit to 2 BCD converter. The logic functions are generated from the Digital application by constructing the Truth Table first. The truth table and the generated logic function can be seen at Lampiran 4.
+    -- This logic functions comes from the truth table of five bit to 2 BCD converter. The logic functions are generated from the Digital application by constructing the Truth Table first. The truth table and the generated logic function can be seen at Lampiran 4 in the Tugas Pendahuluan.
 
     -- Tens in digit logic form
     tens(3) <= '0';

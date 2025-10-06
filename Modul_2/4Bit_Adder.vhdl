@@ -1,15 +1,22 @@
--- Muhammad Ammar Hanif
--- 13224087
--- EL2102 Praktikum Sistem Digital
--- Tugas Pendahuluan Nomor 3
--- Kelompok 5
+-- Nama          : Muhammad Ammar Hanif
+-- NIM           : 13224087
+-- Rombongan     : -
+-- Kelompok      : 5 
+-- Percobaan     : 2
+-- Tanggal       : 8 Oktober 2024
+------------------------------------------------------------------------------
+-- Deskripsi
+-- Fungsi   : Menjumlahkan A (4 bit) dan B (4 bit), menghasilkan S (4 bit) dan
+--            Carry out (1 bit).
+-- Input    : A (4 bit) dan B (4 bit) 
+-- Output   : S (4 bit) sum dari A dan B, Cout (1 bit) carry dari penjumlahan
 
 -- Import and use the ieee library
 library ieee;
 use ieee.std_logic_1164.all;
 
--- Create an entity called fourbit_to_BCD
-entity fourbit_to_BCD is 
+-- Create an entity called fourbit_adder
+entity fourbit_adder is 
     port (
         -- A and B, each as the 4 bit input number
         A, B : in std_logic_vector(3 downto 0);
@@ -24,14 +31,13 @@ entity fourbit_to_BCD is
         S : out std_logic_vector(3 downto 0);
 
         -- The Carry output
-        Cout : out std_logic  -- FIX 1: Semicolon REMOVED from this line
+        Cout : out std_logic
     );
-end entity fourbit_to_BCD;
+end entity fourbit_adder;
 
 -- creating a behavioral architecture
-architecture behavioral of fourbit_to_BCD is
-begin -- FIX 2: 'begin' keyword ADDED here
-
+architecture behavioral of fourbit_adder is
+begin
     -- Generating S(0) and the 1st carry output
     S(0) <= A(0) xor B(0) xor Cin_initial;
     Cin(0) <= (A(0) and B(0)) or 
@@ -58,5 +64,4 @@ begin -- FIX 2: 'begin' keyword ADDED here
 
     -- Setting the final carry as an output variable
     Cout <= Cin(3);
-
 end architecture behavioral;
