@@ -18,7 +18,7 @@ entity fivebit_to_2bcd is
         tens  : out std_logic_vector(3 downto 0);
         
         -- ones, output, in the form of vector variable
-        ones  : out std_logic_vector(3 downto 0);
+        ones  : out std_logic_vector(3 downto 0)
     );
 end entity fivebit_to_2bcd;
 

@@ -24,12 +24,14 @@ entity fourbit_to_BCD is
         S : out std_logic_vector(3 downto 0);
 
         -- The Carry output
-        Cout : out std_logic;
+        Cout : out std_logic  -- FIX 1: Semicolon REMOVED from this line
     );
 end entity fourbit_to_BCD;
 
 -- creating a behavioral architecture
 architecture behavioral of fourbit_to_BCD is
+begin -- FIX 2: 'begin' keyword ADDED here
+
     -- Generating S(0) and the 1st carry output
     S(0) <= A(0) xor B(0) xor Cin_initial;
     Cin(0) <= (A(0) and B(0)) or 
@@ -56,4 +58,5 @@ architecture behavioral of fourbit_to_BCD is
 
     -- Setting the final carry as an output variable
     Cout <= Cin(3);
+
 end architecture behavioral;

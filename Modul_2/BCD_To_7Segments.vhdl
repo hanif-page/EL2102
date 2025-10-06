@@ -12,7 +12,7 @@ use ieee.std_logic_1164.all;
 entity BCD_to_7segment is
     port (
         X : in std_logic_vector(3 downto 0);
-        a, b, c, d, e, f, g : out std_logic;
+        a, b, c, d, e, f, g : out std_logic
     );
 end entity BCD_to_7segment;
 
