@@ -1,0 +1,114 @@
+# ===================================================================
+# Quartus Prime Settings File for the "display_output" project
+#
+# This file maps the VHDL ports to the physical pins on the
+# Altera MAX 10 FPGA board based on the project specification.
+# ===================================================================
+
+
+# ===================================================================
+# -- Inputs: Mapped to Slide Switches
+# ===================================================================
+# Input A (4 bit) is connected to Slide switch [3-0]
+set_location_assignment PIN_C10 -to A[0]
+set_location_assignment PIN_C11 -to A[1]
+set_location_assignment PIN_D12 -to A[2]
+set_location_assignment PIN_C12 -to A[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to A[*]
+
+# Input B (4 bit) is connected to Slide switch [7-4]
+set_location_assignment PIN_A12 -to B[0]
+set_location_assignment PIN_B12 -to B[1]
+set_location_assignment PIN_A13 -to B[2]
+set_location_assignment PIN_A14 -to B[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to B[*]
+
+# Carry_in (1 bit) is connected to Slide switch [8]
+set_location_assignment PIN_B14 -to Cin
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to Cin
+
+
+# ===================================================================
+# -- Outputs: Mapped to LEDs
+# ===================================================================
+# A_out (4 bit) is connected to LED [3-0]
+set_location_assignment PIN_A8 -to A_out[0]
+set_location_assignment PIN_A9 -to A_out[1]
+set_location_assignment PIN_A10 -to A_out[2]
+set_location_assignment PIN_B10 -to A_out[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to A_out[*]
+
+# B_out (4 bit) is connected to LED [7-4]
+set_location_assignment PIN_D13 -to B_out[0]
+set_location_assignment PIN_C13 -to B_out[1]
+set_location_assignment PIN_E14 -to B_out[2]
+set_location_assignment PIN_D14 -to B_out[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to B_out[*]
+
+# Carry_in_out (1 bit) is connected to LED [8]
+set_location_assignment PIN_A11 -to CinOut
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CinOut
+
+
+# ===================================================================
+# -- Outputs: Mapped to 7-Segment Displays
+# ===================================================================
+# 7Segment_S0 (7 bit) is connected to HEX0
+set_location_assignment PIN_C14 -to sevensegS0[0]
+set_location_assignment PIN_E15 -to sevensegS0[1]
+set_location_assignment PIN_C15 -to sevensegS0[2]
+set_location_assignment PIN_E16 -to sevensegS0[3]
+set_location_assignment PIN_D17 -to sevensegS0[4]
+set_location_assignment PIN_C17 -to sevensegS0[5]
+set_location_assignment PIN_D15 -to sevensegS0[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sevensegS0[*]
+
+# 7Segment_S1 (7 bit) is connected to HEX1
+set_location_assignment PIN_D18 -to sevensegS1[0]
+set_location_assignment PIN_E18 -to sevensegS1[1]
+set_location_assignment PIN_B16 -to sevensegS1[2]
+set_location_assignment PIN_A17 -to sevensegS1[3]
+set_location_assignment PIN_A18 -to sevensegS1[4]
+set_location_assignment PIN_B17 -to sevensegS1[5]
+set_location_assignment PIN_A16 -to sevensegS1[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sevensegS1[*]
+
+# 7Segment_B0 (7 bit) is connected to HEX2
+set_location_assignment PIN_B20 -to sevensegB0[0]
+set_location_assignment PIN_A20 -to sevensegB0[1]
+set_location_assignment PIN_B19 -to sevensegB0[2]
+set_location_assignment PIN_A21 -to sevensegB0[3]
+set_location_assignment PIN_B21 -to sevensegB0[4]
+set_location_assignment PIN_C22 -to sevensegB0[5]
+set_location_assignment PIN_B22 -to sevensegB0[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sevensegB0[*]
+
+# 7Segment_B1 (7 bit) is connected to HEX3
+set_location_assignment PIN_F21 -to sevensegB1[0]
+set_location_assignment PIN_E22 -to sevensegB1[1]
+set_location_assignment PIN_E21 -to sevensegB1[2]
+set_location_assignment PIN_C19 -to sevensegB1[3]
+set_location_assignment PIN_C20 -to sevensegB1[4]
+set_location_assignment PIN_D19 -to sevensegB1[5]
+set_location_assignment PIN_E17 -to sevensegB1[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sevensegB1[*]
+
+# 7Segment_A0 (7 bit) is connected to HEX4
+set_location_assignment PIN_F18 -to sevensegA0[0]
+set_location_assignment PIN_E20 -to sevensegA0[1]
+set_location_assignment PIN_E19 -to sevensegA0[2]
+set_location_assignment PIN_J18 -to sevensegA0[3]
+set_location_assignment PIN_H19 -to sevensegA0[4]
+set_location_assignment PIN_F19 -to sevensegA0[5]
+set_location_assignment PIN_F20 -to sevensegA0[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sevensegA0[*]
+
+# 7Segment_A1 (7 bit) is connected to HEX5
+set_location_assignment PIN_J20 -to sevensegA1[0]
+set_location_assignment PIN_K20 -to sevensegA1[1]
+set_location_assignment PIN_L18 -to sevensegA1[2]
+set_location_assignment PIN_N18 -to sevensegA1[3]
+set_location_assignment PIN_M20 -to sevensegA1[4]
+set_location_assignment PIN_N19 -to sevensegA1[5]
+set_location_assignment PIN_N20 -to sevensegA1[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sevensegA1[*]

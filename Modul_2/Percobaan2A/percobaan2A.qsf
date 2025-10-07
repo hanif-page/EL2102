@@ -1,0 +1,26 @@
+# ======================================================================
+# Inputs: 4-bit vector X connected to Slide Switches SW[3:0]
+# ======================================================================
+set_location_assignment PIN_C10 -to X[0]
+set_location_assignment PIN_C11 -to X[1]
+set_location_assignment PIN_D12 -to X[2]
+set_location_assignment PIN_C12 -to X[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to X[*]
+
+# ======================================================================
+# Outputs: Segments a-g connected to 7-Segment Display HEX0
+# ======================================================================
+set_location_assignment PIN_C14 -to a
+set_location_assignment PIN_E15 -to b
+set_location_assignment PIN_C15 -to c
+set_location_assignment PIN_E16 -to d
+set_location_assignment PIN_D17 -to e
+set_location_assignment PIN_C17 -to f
+set_location_assignment PIN_D15 -to g
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to a
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to b
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to c
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to d
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to e
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to f
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to g
