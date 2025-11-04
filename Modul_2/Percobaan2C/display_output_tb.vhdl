@@ -1,50 +1,40 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
--- The testbench entity has no ports.
-entity tb_display_output is
-end entity tb_display_output;
+entity display_output_tb is
+end entity;
 
-architecture behavioral of tb_display_output is
+architecture behavior of display_output_tb is
 
-    -- 1. Declare the component we want to test.
-    component display_output is
+    -- DUT declaration
+    component display_output
         port (
-            A          : in  std_logic_vector(3 downto 0);
-            B          : in  std_logic_vector(3 downto 0);
-            Cin        : in  std_logic;
-            A_out      : out std_logic_vector(3 downto 0);
-            B_out      : out std_logic_vector(3 downto 0);
-            CinOut     : out std_logic;
+            A : in std_logic_vector(3 downto 0);
+            B : in std_logic_vector(3 downto 0);
+            Cin : in std_logic;
+            A_out : out std_logic_vector(3 downto 0);
+            B_out : out std_logic_vector(3 downto 0);
+            CinOut : out std_logic;
             sevensegA0 : out std_logic_vector(0 to 6);
-            sevensegA1 : out std_logic_vector(0 to 6);
+            sevensegA1 : out std_logic_vector(0 to 6);  
             sevensegB0 : out std_logic_vector(0 to 6);
-            sevensegB1 : out std_logic_vector(0 to 6);
+            sevensegB1 : out std_logic_vector(0 to 6);  
             sevensegS0 : out std_logic_vector(0 to 6);
             sevensegS1 : out std_logic_vector(0 to 6)
         );
-    end component display_output;
+    end component;
 
-    -- 2. Create signals to connect to the component's ports.
-    signal tb_A   : std_logic_vector(3 downto 0);
-    signal tb_B   : std_logic_vector(3 downto 0);
-    signal tb_Cin : std_logic;
-    signal tb_A_out     : std_logic_vector(3 downto 0);
-    signal tb_B_out     : std_logic_vector(3 downto 0);
-    signal tb_CinOut    : std_logic;
-    signal tb_sevensegA0: std_logic_vector(0 to 6);
-    signal tb_sevensegA1: std_logic_vector(0 to 6);
-    signal tb_sevensegB0: std_logic_vector(0 to 6);
-    signal tb_sevensegB1: std_logic_vector(0 to 6);
-    signal tb_sevensegS0: std_logic_vector(0 to 6);
-    signal tb_sevensegS1: std_logic_vector(0 to 6);
+    -- Signals
+    signal A_tb, B_tb        : std_logic_vector(3 downto 0) := (others => '0');
+    signal Cin_tb            : std_logic := '0';
+    signal A_out_tb, B_out_tb: std_logic_vector(3 downto 0);
+    signal CinOut_tb         : std_logic;
+    signal sevensegA0_tb, sevensegA1_tb : std_logic_vector(0 to 6);
+    signal sevensegB0_tb, sevensegB1_tb : std_logic_vector(0 to 6);
+    signal sevensegS0_tb, sevensegS1_tb : std_logic_vector(0 to 6);
 
-    -- 3. Define the data structure for the test vectors.
-    -- Each vector is 9 bits: Cin (1 bit), A (4 bits), B (4 bits)
+    -- Type and constant definitions for test vectors
     type test_vector_array is array (1 to 64) of std_logic_vector(8 downto 0);
-    
-    -- This constant holds all 64 vectors from your tables.
-    -- Format: "C A3 A2 A1 A0 B3 B2 B1 B0"
     constant test_vectors : test_vector_array := (
         -- Vectors 1-32 from the first table
         1  => "000000000", 2  => "000010000", 3  => "000100000", 4  => "000110000",
@@ -68,35 +58,34 @@ architecture behavioral of tb_display_output is
 
 begin
 
-    -- 4. Instantiate the Unit Under Test (UUT).
-    UUT : display_output
+    -- Instantiate the DUT
+    UUT: display_output
         port map (
-            A => tb_A, B => tb_B, Cin => tb_Cin,
-            A_out => tb_A_out, B_out => tb_B_out, CinOut => tb_CinOut,
-            sevensegA0 => tb_sevensegA0, sevensegA1 => tb_sevensegA1,
-            sevensegB0 => tb_sevensegB0, sevensegB1 => tb_sevensegB1,
-            sevensegS0 => tb_sevensegS0, sevensegS1 => tb_sevensegS1
+            A => A_tb,
+            B => B_tb,
+            Cin => Cin_tb,
+            A_out => A_out_tb,
+            B_out => B_out_tb,
+            CinOut => CinOut_tb,
+            sevensegA0 => sevensegA0_tb,
+            sevensegA1 => sevensegA1_tb,
+            sevensegB0 => sevensegB0_tb,
+            sevensegB1 => sevensegB1_tb,
+            sevensegS0 => sevensegS0_tb,
+            sevensegS1 => sevensegS1_tb
         );
 
-    -- 5. Stimulus Process: This process reads from the constant array.
-    stimulus_proc : process
+    -- Apply all 64 test vectors
+    stim_proc: process
     begin
-        report "Starting table-driven test...";
-
-        -- Loop through all 64 vectors in the constant array
-        for i in 1 to 64 loop
-            -- Assign the bits from the current vector to the input signals
-            tb_Cin <= test_vectors(i)(8);
-            tb_A   <= test_vectors(i)(7 downto 4);
-            tb_B   <= test_vectors(i)(3 downto 0);
-
-            -- Wait for a short time before applying the next vector
+        for i in test_vectors'range loop
+            Cin_tb <= test_vectors(i)(8);          -- First bit
+            A_tb   <= test_vectors(i)(7 downto 4); -- Middle 4 bits
+            B_tb   <= test_vectors(i)(3 downto 0); -- Last 4 bits
             wait for 10 ns;
         end loop;
 
-        report "Test finished after 64 vectors.";
-        wait; -- Stop the simulation
+        wait; -- end simulation
+    end process;
 
-    end process stimulus_proc;
-
-end architecture behavioral;
+end architecture;
